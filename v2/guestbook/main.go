@@ -206,26 +206,32 @@ func getPrimaryTone(value string, headers http.Header) (tone string) {
 	}
 	defer res.Body.Close()
 
-	body := []Tone{}
+	body := []
+	
+	
+	
+	
+	{}
 	json.NewDecoder(res.Body).Decode(&body)
+
 	if len(body) > 0 {
-		// 7 tones:  anger, fear, joy, sadness, analytical, confident, and tentative
-		if body[0].ToneName == "Joy" {
-			return body[0].ToneName + " (✿◠‿◠)"
-		} else if body[0].ToneName == "Anger" {
-			return body[0].ToneName + " (ಠ_ಠ)"
-		} else if body[0].ToneName == "Fear" {
-			return body[0].ToneName + " (ง’̀-‘́)ง"
-		} else if body[0].ToneName == "Sadness" {
-			return body[0].ToneName + " （︶︿︶）"
-		} else if body[0].ToneName == "Analytical" {
-			return body[0].ToneName + " ( °□° )"
-		} else if body[0].ToneName == "Confident" {
-			return body[0].ToneName + " (▀̿Ĺ̯▀̿ ̿)"
-		} else if body[0].ToneName == "Tentative" {
-			return body[0].ToneName + " (•_•)"
+		
+		if body["ToneName"] == "excited" {
+			return "Excited (✿◠‿◠)"
+		} else if body["ToneName"] == "frustrated" {
+			return "Frustrated (ಠ_ಠ)"
+		} else if body["ToneName"] == "impolite" {
+			return "Impolite (ง’̀-‘́)ง"
+		} else if body["ToneName"] == "polite" {
+			return "Polite ◠‿◠"
+		} else if body["ToneName"] == "sad" {
+			return "Sad （︶︿︶）"
+		} else if body["ToneName"] == "satisfied" {
+			return "Satisfied ( °□° )"
+		} else if body["ToneName"] == "Sympathetic" {
+			return "Sympathetic (•_•)"
 		}
-		return body[0].ToneName
+		return body["ToneName"]
 	}
 
 	return "No Tone Detected"
