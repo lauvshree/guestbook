@@ -6,7 +6,7 @@ RUN apt-get update -qq && \
     openssl python3.7 python3-pip
 
 RUN pip3 install --upgrade pip setuptools
-RUN pip3 install requests Flask Flask-Cache pyopenssl ibm-watson==5.2.1
+RUN pip3 install requests Flask Flask-Cache pyopenssl ibm-watson==6.0.0
 
 # application source code including static files, templates, etc
 ADD src /app/src
