@@ -212,22 +212,22 @@ func getPrimaryTone(value string, headers http.Header) (tone string) {
 
 	if len(body) > 0 {
 		
-		if body[0]["tone_name"] == "excited" {
+		if body[0].ToneName == "excited" {
 			return "Excited (✿◠‿◠)"
-		} else if body[0]["tone_name"] == "frustrated" {
+		} else if body[0].ToneName == "frustrated" {
 			return "Frustrated (ಠ_ಠ)"
-		} else if body[0]["tone_name"] == "impolite" {
+		} else if body[0].ToneName == "impolite" {
 			return "Impolite (ง’̀-‘́)ง"
-		} else if body[0]["tone_name"] == "polite" {
+		} else if body[0].ToneName == "polite" {
 			return "Polite ◠‿◠"
-		} else if body[0]["tone_name"] == "sad" {
+		} else if body[0].ToneName == "sad" {
 			return "Sad （︶︿︶）"
-		} else if body[0]["tone_name"] == "satisfied" {
+		} else if body[0].ToneName == "satisfied" {
 			return "Satisfied ( °□° )"
-		} else if body[0]["tone_name"] == "Sympathetic" {
+		} else if body[0].ToneName == "Sympathetic" {
 			return "Sympathetic (•_•)"
 		}
-		return body[0]["tone_name"]
+		return body[0].ToneName
 	}
 
 	return "No Tone Detected"
