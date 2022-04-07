@@ -37,14 +37,15 @@ def analyze_tone(input_text):
     )
     natural_language_understanding.set_service_url(api_url)
     response = natural_language_understanding.analyze(
-  text=input_text,
-  features={
-      "classifications": {
-              "model": "tone-classifications-en-v1",
-      }
-  },
-  )
-    return json.dumps(response.result.get("classifications")[0].get("class_name"))
+		  text=input_text,
+		  features={
+		      "classifications": {
+		              "model": "tone-classifications-en-v1",
+		      }
+		  },
+		  )
+    tone=response.result.get("classifications")[0].get("class_name")
+    return { "tone_name" : tone}
 '''
  This is the analyzer API that accepts POST data as describes below:
  POST http://localhost:5000/tone body=\
@@ -61,7 +62,7 @@ def tone():
     input_text = request.json['input_text']
     log.info("input text is '%s'", input_text)
     tone_doc = analyze_tone(input_text)
-    return (tone_doc, 200)
+    return (json.dumps(tone_doc), 200)
 
 
 @app.route('/', methods=['GET'])
