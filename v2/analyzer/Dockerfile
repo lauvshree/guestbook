@@ -6,13 +6,7 @@ RUN apt-get update -qq && \
     openssl python3.7 python3-pip
 
 RUN pip3 install --upgrade pip setuptools
-RUN pip3 install requests Flask Flask-Cache
-
-ENV TONE_ANALYZER_API_KEY=CiVfMbYIslE0zmqNO9OPhu7VgOWPkvT7AQJ5Sa1HoQRj
-ENV TONE_ANALYZER_SERVICE_API=https://api.eu-gb.natural-language-understanding.watson.cloud.ibm.com/instances/85429dfa-bd7e-4fec-8460-06eae1c52eee
-
-RUN pip3 install pyopenssl
-RUN pip3 install ibm-watson==5.2.1
+RUN pip3 install requests Flask Flask-Cache pyopenssl ibm-watson==5.2.1
 
 # application source code including static files, templates, etc
 ADD src /app/src
