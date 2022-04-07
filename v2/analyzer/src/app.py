@@ -45,7 +45,7 @@ def analyze_tone(input_text):
 		  },
 		  )
     tone=response.result.get("classifications")[0].get("class_name")
-    return { "tone_name" : tone}
+    return [{ "tone_name" : tone}]
 '''
  This is the analyzer API that accepts POST data as describes below:
  POST http://localhost:5000/tone body=\
