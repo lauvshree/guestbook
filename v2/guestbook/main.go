@@ -207,31 +207,27 @@ func getPrimaryTone(value string, headers http.Header) (tone string) {
 	defer res.Body.Close()
 
 	body := []
-	
-	
-	
-	
-	{}
+
 	json.NewDecoder(res.Body).Decode(&body)
 
 	if len(body) > 0 {
 		
-		if body["ToneName"] == "excited" {
+		if body[0]["tone_name"] == "excited" {
 			return "Excited (✿◠‿◠)"
-		} else if body["ToneName"] == "frustrated" {
+		} else if body[0]["tone_name"] == "frustrated" {
 			return "Frustrated (ಠ_ಠ)"
-		} else if body["ToneName"] == "impolite" {
+		} else if body[0]["tone_name"] == "impolite" {
 			return "Impolite (ง’̀-‘́)ง"
-		} else if body["ToneName"] == "polite" {
+		} else if body[0]["tone_name"] == "polite" {
 			return "Polite ◠‿◠"
-		} else if body["ToneName"] == "sad" {
+		} else if body[0]["tone_name"] == "sad" {
 			return "Sad （︶︿︶）"
-		} else if body["ToneName"] == "satisfied" {
+		} else if body[0]["tone_name"] == "satisfied" {
 			return "Satisfied ( °□° )"
-		} else if body["ToneName"] == "Sympathetic" {
+		} else if body[0]["tone_name"] == "Sympathetic" {
 			return "Sympathetic (•_•)"
 		}
-		return body["ToneName"]
+		return body[0]["tone_name"]
 	}
 
 	return "No Tone Detected"
