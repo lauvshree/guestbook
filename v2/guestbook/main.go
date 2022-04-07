@@ -206,8 +206,8 @@ func getPrimaryTone(value string, headers http.Header) (tone string) {
 	}
 	defer res.Body.Close()
 
-	body := []
-
+	body := []Tone{}
+	
 	json.NewDecoder(res.Body).Decode(&body)
 
 	if len(body) > 0 {
